@@ -2,13 +2,14 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-
-def passthrough(x, **kwargs):
+#serialize the model 
+def passthrough(x, **kwargs):  
     return x
 
+#activation function
 def ELUCons(elu, nchan):
     if elu:
-        return nn.ELU(inplace=True)
+        return nn.ELU(inplace=True) #Applies element-wise, ELU(x)=max(0,x)+min(0,α∗(exp(x)−1))
     else:
         return nn.PReLU(nchan)
 
